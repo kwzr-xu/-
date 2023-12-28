@@ -1,0 +1,151 @@
+[
+    {
+        "id": 5001,
+        "speed": 600,
+        "img": [
+            "ui_Battery_01_10.png"
+        ]
+    },
+    {
+        "id": 5002,
+        "speed": 400,
+      "img": [
+        "ui_Battery_01_11.png"
+      ]
+    },
+    {
+        "id": 5003,
+        "speed": 500,
+        "img": [
+            "ui_Battery_01_12.png"
+        ]
+    },
+    {
+        "id": 5004,
+        "speed": 300,
+        "img": [
+            "ui_Battery_02_05.png"
+        ]
+    },
+    {
+        "id": 5005,
+        "speed": 400,
+        "img": [
+            "ui_Battery_02_07.png"
+        ]
+    },
+    {
+        "id": 5006,
+        "speed": 500,
+        "img": [
+            "ui_Battery_02_09.png"
+        ]
+    },
+    {
+        "id": 5007,
+        "speed": 300,
+        "img": [
+            "ui_Battery_03_09.png"
+        ]
+    },
+    {
+        "id": 5008,
+        "speed": 400,
+        "img": [
+            "ui_Battery_03_10.png",
+            "ui_Battery_03_11.png"
+        ]
+    },
+    {
+        "id": 5009,
+        "speed": 500,
+        "img": [
+            "ui_Battery_03_12.png",
+            "ui_Battery_03_13.png"
+        ]
+    },
+    {
+        "id": 5010,
+        "speed": 300,
+        "img": [
+            "ui_Battery_04_09.png"
+        ]
+    },
+    {
+        "id": 5011,
+        "speed": 400,
+        "img": [
+            "ui_Battery_04_09.png"
+        ]
+    },
+    {
+        "id": 5012,
+        "speed": 500,
+        "img": [
+            "ui_Battery_04_09.png"
+        ]
+    },
+    {
+        "id": 5013,
+        "speed": 300,
+        "img": [
+            "ui_Battery_05_09.png"
+        ]
+    },
+    {
+        "id": 5014,
+        "speed": 400,
+        "img": [
+            "ui_Battery_05_10.png"
+        ]
+    },
+    {
+        "id": 5015,
+        "speed": 500,
+        "img": [
+            "ui_Battery_05_11.png"
+        ]
+    },
+    {
+        "id": 5016,
+        "speed": 300,
+        "img": [
+            "ui_Battery_06_07.png"
+        ]
+    },
+    {
+        "id": 5017,
+        "speed": 400,
+        "img": [
+            "ui_Battery_06_08.png"
+        ]
+    },
+    {
+        "id": 5018,
+        "speed": 500,
+        "img": [
+            "ui_Battery_06_09.png"
+        ]
+    },
+    {
+        "id": 5019,
+        "speed": 300,
+        "img": [
+            "ui_Battery_07_14.png"
+        ]
+    },
+    {
+        "id": 5020,
+        "speed": 400,
+        "img": [
+            "ui_Battery_07_14.png"
+        ]
+    },
+    {
+        "id": 5021,
+        "speed": 500,
+        "img": [
+            "ui_Battery_07_15.png"
+        ]
+    }
+]

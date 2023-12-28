@@ -1,0 +1,45 @@
+{
+	"Common": {
+		"png": [
+			"Common/ui_ProgressBar_01.png",
+			"Common/ui_ProgressBar_02.png"
+		],
+		"plist": [],
+		"audio": []
+	},
+	"Menu": {
+    "png": [
+      "Default-Landscape_ipad.png",
+      "Menu/ui_Menu.png",
+      "Menu/ui_Select.png",
+      "Menu/ui_Setting.png"
+    ],
+    "plist": [ "Menu/ui_Menu.plist", "Menu/ui_Select.plist", "Menu/ui_Setting.plist" ],
+		"audio": ["Menu/MainAudio.mp3","click.mp3"]
+	},
+	"Game": {
+    "png": [
+      "Game/ui_Battery.png",
+      "Game/ui_Item.png",
+      "Game/ui_luobo.png",
+      "Game/ui_Monster.png",
+      "Game/ui_obstacle.png",
+      "Game/ui_icon.png",
+      "Game/ui_RadishHp.png",
+      "Game/ui_EndButton.png",
+      "Game/ui_MonsterDeath.png"
+    ],
+    "plist": [
+      "Game/ui_Battery.plist",
+      "Game/ui_Item.plist",
+      "Game/ui_luobo.plist",
+      "Game/ui_Monster.plist",
+      "Game/ui_obstacle.plist",
+      "Game/ui_icon.plist",
+      "Game/ui_RadishHp.plist",
+      "Game/ui_EndButton.plist",
+      "Game/ui_MonsterDeath.plist"
+    ],
+		"audio": []
+	}
+}

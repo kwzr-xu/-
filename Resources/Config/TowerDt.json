@@ -1,0 +1,291 @@
+[
+  {
+    "id": 4001,
+    "level": [
+      {
+        "BulletId": 5001,
+        "ack": 10,
+        "ackInterval": 0.5,
+        "worth": 100,
+        "upgradeCoin": 180,
+        "scope": 150,
+        "imgs": [
+          "ui_Battery_01_01.png",
+          "ui_Battery_01_03.png"
+        ]
+      },
+      {
+        "BulletId": 5001,
+        "ack": 18,
+        "ackInterval": 0.3,
+        "worth": 150,
+        "upgradeCoin": 220,
+        "scope": 180,
+        "imgs": [
+          "ui_Battery_01_04.png",
+          "ui_Battery_01_05.png"
+        ]
+      },
+      {
+        "BulletId": 5001,
+        "ack": 25,
+        "ackInterval": 0.2,
+        "worth": 200,
+        "upgradeCoin": 2000,
+        "scope": 200,
+        "imgs": [
+          "ui_Battery_01_06.png",
+          "ui_Battery_01_07.png"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4002,
+    "level": [
+      {
+        "BulletId": 5004,
+        "ack": 20,
+        "ackInterval": 1,
+        "worth": 220,
+        "upgradeCoin": 220,
+        "scope": 150,
+        "imgs": [
+          "ui_Battery_02_04.png",
+          "ui_Battery_02_05.png"
+        ]
+      },
+      {
+        "BulletId": 5004,
+        "ack": 18,
+        "ackInterval": 0.8,
+        "worth": 250,
+        "upgradeCoin": 320,
+        "scope": 180,
+        "imgs": [
+          "ui_Battery_02_06.png",
+          "ui_Battery_02_07.png"
+        ]
+      },
+      {
+        "BulletId": 5004,
+        "ack": 25,
+        "ackInterval": 0.5,
+        "worth": 300,
+        "upgradeCoin": 2000,
+        "scope": 200,
+        "imgs": [
+          "ui_Battery_02_08.png",
+          "ui_Battery_02_09.png"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4003,
+    "level": [
+      {
+        "BulletId": 5007,
+        "ack": 10,
+        "ackInterval": 0.8,
+        "worth": 160,
+        "upgradeCoin": 180,
+        "scope": 150,
+        "imgs": [
+          "ui_Battery_03_03.png",
+          "ui_Battery_03_04.png"
+        ]
+      },
+      {
+        "BulletId": 5008,
+        "ack": 15,
+        "ackInterval": 0.5,
+        "worth": 210,
+        "upgradeCoin": 260,
+        "scope": 200,
+        "imgs": [
+          "ui_Battery_03_05.png",
+          "ui_Battery_03_06.png"
+        ]
+      },
+      {
+        "BulletId": 5009,
+        "ack": 25,
+        "ackInterval": 0.2,
+        "worth": 260,
+        "upgradeCoin": 2000,
+        "scope": 250,
+        "imgs": [
+          "ui_Battery_03_07.png",
+          "ui_Battery_03_08.png"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4004,
+    "level": [
+      {
+        "BulletId": 5010,
+        "ack": 20,
+        "ackInterval": 1,
+        "worth": 220,
+        "upgradeCoin": 220,
+        "scope": 200,
+        "imgs": [
+          "ui_Battery_04_03.png",
+          "ui_Battery_04_03.png"
+        ]
+      },
+      {
+        "BulletId": 5011,
+        "ack": 30,
+        "ackInterval": 0.7,
+        "worth": 300,
+        "upgradeCoin": 480,
+        "scope": 250,
+        "imgs": [
+          "ui_Battery_04_04.png",
+          "ui_Battery_04_04.png"
+        ]
+      },
+      {
+        "BulletId": 5012,
+        "ack": 40,
+        "ackInterval": 0.5,
+        "worth": 400,
+        "upgradeCoin": 2000,
+        "scope": 350,
+        "imgs": [
+          "ui_Battery_04_05.png",
+          "ui_Battery_04_05.png"
+        ]
+      }
+    ]
+  },
+
+  {
+    "id": 4005,
+    "level": [
+      {
+        "BulletId": 5013,
+        "ack": 5,
+        "ackInterval": 1,
+        "worth": 100,
+        "upgradeCoin": 180,
+        "scope": 110,
+        "imgs": [
+          "ui_Battery_05_04.png",
+          "ui_Battery_05_05.png"
+        ]
+      },
+      {
+        "BulletId": 5014,
+        "ack": 7,
+        "ackInterval": 0.7,
+        "worth": 180,
+        "upgradeCoin": 220,
+        "scope": 150,
+        "imgs": [
+          "ui_Battery_05_06.png",
+          "ui_Battery_05_07.png"
+        ]
+      },
+      {
+        "BulletId": 5015,
+        "ack": 1000,
+        "ackInterval": 0.5,
+        "worth": 300,
+        "upgradeCoin": 2000,
+        "scope": 200,
+        "imgs": [
+          "ui_Battery_05_08.png",
+          "ui_Battery_05_08.png"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4006,
+    "level": [
+      {
+        "BulletId": 5016,
+        "ack": 10,
+        "ackInterval": 1,
+        "worth": 220,
+        "upgradeCoin": 180,
+        "scope": 150,
+        "imgs": [
+          "ui_Battery_06_04.png",
+          "ui_Battery_06_04.png"
+        ]
+      },
+      {
+        "BulletId": 5017,
+        "ack": 20,
+        "ackInterval": 0.7,
+        "worth": 250,
+        "upgradeCoin": 320,
+        "scope": 250,
+        "imgs": [
+          "ui_Battery_06_05.png",
+          "ui_Battery_06_05.png"
+        ]
+      },
+      {
+        "BulletId": 5018,
+        "ack": 30,
+        "ackInterval": 0.5,
+        "worth": 300,
+        "upgradeCoin": 2000,
+        "scope": 350,
+        "imgs": [
+          "ui_Battery_06_06.png",
+          "ui_Battery_06_06.png"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4007,
+    "level": [
+      {
+        "BulletId": 5019,
+        "ack": 8,
+        "ackInterval": 0.8,
+        "worth": 220,
+        "upgradeCoin": 180,
+        "scope": 150,
+        "imgs": [
+          "ui_Battery_07_04.png",
+          "ui_Battery_07_05.png"
+        ]
+      },
+      {
+        "BulletId": 5020,
+        "ack": 10,
+        "ackInterval": 0.5,
+        "worth": 300,
+        "upgradeCoin": 260,
+        "scope": 200,
+        "imgs": [
+          "ui_Battery_07_07.png",
+          "ui_Battery_07_09.png"
+        ]
+      },
+      {
+        "BulletId": 5021,
+        "ack": 15,
+        "ackInterval": 0.3,
+        "worth": 300,
+        "upgradeCoin": 2000,
+        "scope": 250,
+        "imgs": [
+          "ui_Battery_07_12.png",
+          "ui_Battery_07_10.png"
+        ]
+      }
+    ]
+  }
+
+]

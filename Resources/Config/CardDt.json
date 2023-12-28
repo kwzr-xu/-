@@ -1,0 +1,51 @@
+[
+    {
+        "id": 3001,
+        "towerID": 4001,
+        "Coins":100,
+        "img": "ui_Battery_01_08.png",
+        "disImg": "ui_Battery_01_09.png"
+    },
+    {
+        "id": 3002,
+        "towerID": 4002,
+        "Coins":220,
+        "img": "ui_Battery_02_02.png",
+        "disImg": "ui_Battery_02_03.png"
+    },
+    {
+        "id": 3003,
+        "towerID": 4003,
+        "Coins":160,
+        "img": "ui_Battery_03_02.png",
+        "disImg": "ui_Battery_03_01.png"
+    },
+    {
+        "id": 3004,
+        "towerID": 4004,
+        "Coins":220,
+        "img": "ui_Battery_04_06.png",
+        "disImg": "ui_Battery_04_02.png"
+    },
+    {
+        "id": 3005,
+        "towerID": 4005,
+        "Coins":160,
+        "img": "ui_Battery_05_03.png",
+        "disImg": "ui_Battery_05_02.png"
+    },
+    {
+        "id": 3006,
+        "towerID": 4006,
+        "Coins":220,
+        "img": "ui_Battery_06_03.png",
+        "disImg": "ui_Battery_06_02.png"
+    },
+    {
+        "id": 3007,
+        "towerID": 4007,
+        "Coins":220,
+        "img": "ui_Battery_07_02.png",
+        "disImg": "ui_Battery_07_03.png"
+    }
+]

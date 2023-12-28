@@ -1,0 +1,32 @@
+[
+  {
+    "id": 7001,
+    "Coins": 0,
+    "hp": 100000,
+    "img": "ui_obstacles_01.png"
+  },
+  {
+    "id": 7002,
+    "Coins": 100,
+    "hp": 200,
+    "img": "ui_obstacles_02.png"
+  },
+  {
+    "id": 7003,
+    "Coins": 200,
+    "hp": 400,
+    "img": "ui_obstacles_03.png"
+  },
+  {
+    "id": 7004,
+    "Coins": 300,
+    "hp": 500,
+    "img": "ui_obstacles_04.png"
+  },
+  {
+    "id": 7005,
+    "Coins": 400,
+    "hp": 500,
+    "img": "ui_obstacles_05.png"
+  }
+]

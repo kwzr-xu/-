@@ -1,0 +1,38 @@
+[
+    {
+        "id": 2001,
+        "ack": 1,
+        "speed": 80,
+        "hp": 100,
+        "coins": 20,
+        "image": "ui_L_Monsters_01_01.png",
+        "anim":"enemyAnim01"
+    },
+  {
+    "id": 2002,
+    "ack": 1,
+    "speed": 150,
+    "hp": 150,
+    "coins": 30,
+    "image": "ui_L_Monsters_02_01.png",
+    "anim": "enemyAnim02"
+  },
+  {
+    "id": 2003,
+    "ack": 1,
+    "speed": 60,
+    "hp": 600,
+    "coins": 50,
+    "image": "ui_L_Monsters_03_01.png",
+    "anim": "enemyAnim03"
+  },
+  {
+    "id": 2004,
+    "ack": 10,
+    "speed": 5,
+    "hp": 10000,
+    "coins": 1000,
+    "image": "ui_L_Monsters_04_01.png",
+    "anim": "enemyAnim04"
+  }
+]
