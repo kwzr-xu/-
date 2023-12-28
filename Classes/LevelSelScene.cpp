@@ -1,9 +1,9 @@
-#include"LevelSelScene.h"
-#include"DynamicDt.h"
-#include"GameScene.h"
-#include"LoadingScene.h"
-#include"ConfigMgr.h"
-#include"GameMenu.h"
+#include "LevelSelScene.h"
+#include "DynamicDt.h"
+#include "GameScene.h"
+//#include "LoadingScene.h"
+#include "ConfigMgr.h"
+#include "GameMenu.h"
 #include "audio/include/AudioEngine.h"
 
 using namespace cocos2d;
@@ -63,7 +63,7 @@ bool CLevelSelScene::init()
     m_pStartButton->setPosition(Vec2(origin.x + visibleSize.width / 2, 120));
 
     // 创建和配置返回按钮
-    m_pBackButton = Button::create("Menu/backNor.png", "Menu/backSel.png", "", Widget::TextureResType::LOCAL);
+    m_pBackButton = Button::create("Menu/BackButtonNor.png", "Menu/BackButtonSel.png", "", Widget::TextureResType::LOCAL);
     m_pBackButton->addTouchEventListener(CC_CALLBACK_1(CLevelSelScene::onButtonClick, this));
     this->addChild(m_pBackButton);
     m_pBackButton->setPosition(Vec2(origin.x + m_pBackButton->getContentSize().width / 2, origin.y + visibleSize.height - m_pBackButton->getContentSize().height / 2));
@@ -75,13 +75,13 @@ bool CLevelSelScene::init()
 void CLevelSelScene::onButtonClick(Ref* pSender)
 {
     // 播放点击音效
-    AudioEngine::play2d("Menu/click.mp3", false);
+    //AudioEngine::play2d("Menu/click.mp3", false);
 
     // 开始按钮逻辑
     if (pSender == m_pStartButton) {
         CDynamicDt::getInstance()->setLevelID(m_pPage->getCurrentPageIndex() + 1001);
-        auto scene = CLoadingScene::createWithData("Game");
-        Director::getInstance()->replaceScene(scene);
+        CGameScene::destroy();
+        Director::getInstance()->replaceScene(TransitionFade::create(1, CGameScene::getInstance()));
     }
     // 返回按钮逻辑
     else if (pSender == m_pBackButton) {

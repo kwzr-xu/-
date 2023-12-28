@@ -1,6 +1,7 @@
 #include"GameOver.h"
 #include"DynamicDt.h"
 #include"GameScene.h"
+#include "LevelSelScene.h"
 
 // 游戏结束类的构造函数
 CGameOver::CGameOver()
@@ -36,6 +37,7 @@ void CGameOver::createGameSuccess()
     Sprite* pBg = Sprite::createWithSpriteFrameName("ui_GameWinNew.png");
     this->addChild(pBg);
 
+    /*
     // 添加鸡腿图片
     Sprite* pJitui = Sprite::createWithSpriteFrameName("JiTui.png");
     pJitui->setPosition(this->getPositionX() - pJitui->getContentSize().width - 15, 23);
@@ -61,6 +63,7 @@ void CGameOver::createGameSuccess()
     Sprite* pMaoXian = Sprite::createWithSpriteFrameName("DangQian.png");
     pMaoXian->setPosition(this->getPositionX() + 25, -17);
     this->addChild(pMaoXian);
+    */
 
     // 添加关卡选择按钮
     m_pLevelSel = Button::create("2.png", "0.png", "", Widget::TextureResType::PLIST);
@@ -68,11 +71,13 @@ void CGameOver::createGameSuccess()
     m_pLevelSel->addClickEventListener(CC_CALLBACK_1(CGameOver::click, this));
     this->addChild(m_pLevelSel);
 
+    /*
     // 添加再试一次按钮
     m_pTryAgain = Button::create("5.png", "3.png", "", Widget::TextureResType::PLIST);
     m_pTryAgain->setPosition(Vec2(this->getPositionX() + m_pLevelSel->getContentSize().width / 2 - 10, this->getPositionY() - 65));
     m_pTryAgain->addClickEventListener(CC_CALLBACK_1(CGameOver::click, this));
     this->addChild(m_pTryAgain);
+    */
 
     // 根据萝卜的健康状况显示不同的萝卜图片
     if (CDynamicDt::getInstance()->getRadishHp() == 10) {
@@ -99,6 +104,7 @@ void CGameOver::createGameOver()
     Sprite* pBg = Sprite::createWithSpriteFrameName("ui_GameOverNew.png");
     this->addChild(pBg);
 
+    /*
     // 添加鸡腿图片
     Sprite* pJitui = Sprite::createWithSpriteFrameName("JiTui.png");
     pJitui->setPosition(this->getPositionX() - pJitui->getContentSize().width - 15, 17);
@@ -124,6 +130,7 @@ void CGameOver::createGameOver()
     Sprite* pMaoXian = Sprite::createWithSpriteFrameName("DangQian.png");
     pMaoXian->setPosition(this->getPositionX() + 25, -20);
     this->addChild(pMaoXian);
+    */
 
     // 添加关卡选择按钮
     m_pLevelSel = Button::create("2.png", "0.png", "", Widget::TextureResType::PLIST);
@@ -132,12 +139,14 @@ void CGameOver::createGameOver()
     this->addChild(m_pLevelSel);
 
     // 添加再试一次按钮
-    m_pTryAgain = Button::create("5.png", "3.png", "", Widget::TextureResType::PLIST);
-    m_pTryAgain->setPosition(Vec2(this->getPositionX() + m_pLevelSel->getContentSize().width / 2 - 10, this->getPositionY() - 65));
-    m_pTryAgain->addClickEventListener(CC_CALLBACK_1(CGameOver::click, this));
-    this->addChild(m_pTryAgain);
+    //m_pTryAgain = Button::create("5.png", "3.png", "", Widget::TextureResType::PLIST);
+    //m_pTryAgain->setPosition(Vec2(this->getPositionX() + m_pLevelSel->getContentSize().width / 2 - 10, this->getPositionY() - 65));
+    //m_pTryAgain->addClickEventListener(CC_CALLBACK_1(CGameOver::click, this));
+    //this->addChild(m_pTryAgain);
+
 }
 
+/*
 // 将GB2312编码转换为UTF-8编码
 char* CGameOver::G2U(const char* gb2312)
 {
@@ -152,9 +161,12 @@ char* CGameOver::G2U(const char* gb2312)
     if (wstr) delete[] wstr;
     return str;
 }
+*/
 
 // 处理按钮点击事件
 void CGameOver::click(Ref* pSender)
 {
-    // 按钮点击处理逻辑
+    if (pSender == m_pLevelSel) {
+        Director::getInstance()->replaceScene(TransitionFade::create(1, CLevelSelScene::create()));
+    }
 }

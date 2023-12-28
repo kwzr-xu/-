@@ -23,7 +23,7 @@ public:
 	CGameScene();
 	~CGameScene();
 	static CGameScene* getInstance();
-	static CGameScene* destory();
+	static CGameScene* destroy();
 	virtual bool init();
 	CREATE_FUNC(CGameScene);
 	CC_SYNTHESIZE_READONLY(CRadish*, m_pRadish, Radish);

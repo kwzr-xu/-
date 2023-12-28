@@ -1,4 +1,3 @@
-// 关卡选择场景类定义
 #ifndef __LevelSelScene_H__
 #define __LevelSelScene_H__
 
@@ -8,23 +7,23 @@
 #include"DataClass.h"
 USING_NS_CC;
 using namespace ui;
-
-class CLevelSelScene :public Scene
+class CLevelSelScene:public Scene
 {
 public:
-    CLevelSelScene();
-    ~CLevelSelScene();
+	CLevelSelScene();
+	~CLevelSelScene();
 
-    virtual bool init();
-    CREATE_FUNC(CLevelSelScene);
+	virtual bool init();
+
+
+	CREATE_FUNC(CLevelSelScene);
 
 private:
-    void onButtonClick(Ref* pSender); // 按钮点击事件处理函数
-
+	void onButtonClick(Ref* pSender);
 private:
-    int levelID;                      // 当前选中的关卡ID
-    Button* m_pStartButton;           // 开始游戏按钮
-    Button* m_pBackButton;            // 返回按钮
-    PageView* m_pPage;                // 页面视图，用于关卡选择
+	int levelID;
+	Button* m_pStartButton;
+	Button* m_pBackButton;
+	PageView* m_pPage;
 };
 #endif

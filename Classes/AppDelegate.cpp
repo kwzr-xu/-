@@ -1,7 +1,8 @@
 // 包含必要的头文件
 #include "AppDelegate.h"
 #include "HelloWorldScene.h"
-#include "LoadingScene.h"
+#include "GameMenu.h"
+//#include "LoadingScene.h"
 #include "LoadData.h"
 
 // 根据选择的音频引擎，包含相应的头文件并使用相应的命名空间
@@ -79,8 +80,21 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     register_all_packages();
 
+    auto spriteFrameCache = SpriteFrameCache::getInstance();
+    spriteFrameCache->addSpriteFramesWithFile("Menu/ui_Select.plist");
+    spriteFrameCache->addSpriteFramesWithFile("Game/ui_Battery.plist");
+    spriteFrameCache->addSpriteFramesWithFile("Game/ui_Item.plist");
+    spriteFrameCache->addSpriteFramesWithFile("Game/ui_luobo.plist");
+    spriteFrameCache->addSpriteFramesWithFile("Game/ui_Monster.plist");
+    spriteFrameCache->addSpriteFramesWithFile("Game/ui_obstacle.plist");
+    spriteFrameCache->addSpriteFramesWithFile("Game/ui_icon.plist");
+    spriteFrameCache->addSpriteFramesWithFile("Game/ui_RadishHp.plist");
+    spriteFrameCache->addSpriteFramesWithFile("Game/ui_EndButton.plist");
+    spriteFrameCache->addSpriteFramesWithFile("Game/ui_MonsterDeath.plist");
+
+
     // 创建并运行场景
-    auto scene = CLoadingScene::createWithData("Menu");
+    auto scene = CGameMenu::scene();
     director->runWithScene(scene);
 
     return true;

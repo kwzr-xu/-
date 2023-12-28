@@ -31,8 +31,8 @@ bool CLoadingScene::initWithData(string strSceneName) {
     strNextSceneName = strSceneName;
 
     // 获取屏幕尺寸和原点坐标
-    auto visibleSize = Director::getInstance()->getVisibleSize();
-    Vec2 origin = Director::getInstance()->getVisibleOrigin();
+    //auto visibleSize = Director::getInstance()->getVisibleSize();
+    //Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
     // 加载通用资源和指定场景的资源
     m_pComDt = CResDtMgr::getInstance()->getData("Common");
@@ -99,7 +99,7 @@ void CLoadingScene::update(float delta) {
             Director::getInstance()->replaceScene(TransitionFade::create(1.0f, CGameMenu::create()));
         }
         if ("Game" == strNextSceneName) {
-            CGameScene::destory();
+            CGameScene::destroy();
             Director::getInstance()->replaceScene(TransitionFade::create(1, CGameScene::getInstance()));
         }
     }

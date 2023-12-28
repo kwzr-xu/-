@@ -1,7 +1,8 @@
 // 包含所需的头文件
 #include "GameScene.h"
+#include "GameMenu.h"
 #include "DynamicDt.h"
-#include "LoadingScene.h"
+//#include "LoadingScene.h"
 #include "audio/include/AudioEngine.h"
 
 using namespace cocos2d;
@@ -108,7 +109,7 @@ CGameScene* CGameScene::getInstance() {
 }
 
 // 销毁场景实例
-CGameScene* CGameScene::destory() {
+CGameScene* CGameScene::destroy() {
 	Director::getInstance()->getScheduler()->setTimeScale(1);
 	m_pInstance = nullptr;
 	return m_pInstance;
@@ -180,14 +181,13 @@ void CGameScene::click(Ref* pSender) {
 	else if (pSender == m_pResume) {
 		Director::getInstance()->resume(); // 恢复游戏
 		this->removeChild(m_pMenuNode); // 移除菜单节点
-		auto scene = CLoadingScene::createWithData("Game"); // 创建新的游戏场景
-		Director::getInstance()->replaceScene(scene); // 切换场景
+		CGameScene::destroy();
+		Director::getInstance()->replaceScene(TransitionFade::create(1, CGameScene::getInstance()));
 	}
 	else if (pSender == m_pLevelSel) {
 		Director::getInstance()->resume(); // 恢复游戏
 		this->removeChild(m_pMenuNode); // 移除菜单节点
-		auto scene = CLoadingScene::createWithData("Menu"); // 创建菜单场景
-		Director::getInstance()->replaceScene(scene); // 切换场景
+		Director::getInstance()->replaceScene(TransitionFade::create(1.0f, CGameMenu::create()));
 	}
 }
 
@@ -256,11 +256,13 @@ void CGameScene::update(float delta) {
 	Vec2 tilePos = CGameScene::getInstance()->getTiledMapCtrl()->getTiledByPos(m_pRadish->getPosition());
 	CEnemy* pEnemy = CGameScene::getInstance()->getEnemyMgr()->getEnemyByTilePos(tilePos);
 
-	if (pEnemy && m_pRadish->getHp() > 3 && m_pRadish->getHpState() < 10) {
+	if (pEnemy && m_pRadish->getHp() > 2 && m_pRadish->getHpState() < 10) {
 		// 萝卜被攻击，更新生命值和状态
 		int Hp = m_pRadish->getHp() - 1;
 		m_pRadish->setHp(Hp);
 		int HpState = m_pRadish->getHpState() + 1;
+		if (HpState > 8)
+			HpState = 8;//最后几个状态贴图不变
 		m_pRadish->setHpState(HpState);
 
 		// 移除敌人并更新萝卜的显示
@@ -268,7 +270,7 @@ void CGameScene::update(float delta) {
 		m_pRadish->m_pHpBar->setSpriteFrame(StringUtils::format("hp_%d.png", m_pRadish->getHp()));
 		m_pRadish->m_pImage->setSpriteFrame(StringUtils::format("ui_luobo_%02d.png", m_pRadish->getHpState()));
 	}
-	else if (m_pRadish->getHp() <= 3 && !VecEnemy.empty()) {
+	else if (m_pRadish->getHp() <= 2 && !VecEnemy.empty()) {//因为这里找贴图少一个，所以结束时萝卜还剩一滴血
 		// 游戏结束逻辑
 		m_StrOverOrEnd = "Over";
 		this->unscheduleUpdate();

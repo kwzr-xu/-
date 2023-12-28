@@ -232,7 +232,7 @@ bool CTowerMgr::onTouchBegan(Touch * pTouch, Event * pEvent)
 	Vec2 tile = CGameScene::getInstance()->getTiledMapCtrl()->getTiledByPos(pos);
 
 	m_nTouchPos = CGameScene::getInstance()->getTiledMapCtrl()->getPosByTiled(tile);
-	if (CGameScene::getInstance()->getTiledMapCtrl()->isNullTile(tile)&& CGameScene::getInstance()->getTiledMapCtrl()->isObstacles(tile)&&!this->isTower(m_nTouchPos)) {
+	if (CGameScene::getInstance()->getTiledMapCtrl()->isNullTile(tile)&&!this->isTower(m_nTouchPos)) {
 		if (pNode != nullptr) {
 			pNode->removeAllChildren();
 		}

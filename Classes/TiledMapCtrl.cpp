@@ -34,6 +34,7 @@ CTiledMapCtrl* CTiledMapCtrl::createWithData(SLevelDt* pData)
     return nullptr;
 }
 
+/*
 // 判断指定的瓦片是否是障碍物
 bool CTiledMapCtrl::isObstacles(const Vec2& tile)
 {
@@ -44,6 +45,7 @@ bool CTiledMapCtrl::isObstacles(const Vec2& tile)
         }
     }
 }
+*/
 
 // 初始化地图
 void CTiledMapCtrl::initMap(SLevelDt* pData)
@@ -67,6 +69,7 @@ void CTiledMapCtrl::initObjGroup()
         m_MapPathPos.insert(pair<int, Vec2>(valueMap["name"].asInt(), pos)); // 存储路径点信息
     }
 
+    /*
     // 获取并处理障碍物对象组
     m_pObstacles = m_pTiledMap->getObjectGroup("obstacles");
     ValueVector obstaclesObjs = m_pObstacles->getObjects();
@@ -77,6 +80,7 @@ void CTiledMapCtrl::initObjGroup()
         pos.y = valueMap["y"].asFloat();
         m_MapObPos.insert(pair<int, Vec2>(valueMap["name"].asInt(), pos)); // 存储障碍物信息
     }
+    */
 }
 
 // 判断指定的瓦片是否为空

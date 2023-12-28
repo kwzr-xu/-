@@ -1,110 +1,132 @@
 #include"Tower.h"
 #include"GameScene.h"
-
-// 构造函数，初始化各种参数
 CTower::CTower()
-    :m_nCurGrade(0) // 当前等级
-    , nCurState(E_STATE_NORMAL) // 当前状态（正常或开火）
-    , m_nSaleCoin(0) // 出售金币
-    , m_nDir(0, -1) // 方向
-    , m_nEnemyIndex(0) // 敌人索引
-    , m_nCurTowerID(0) // 当前塔台ID
-    , i(0) // 辅助变量
+	:m_nCurGrade(0)
+	, nCurState(E_STATE_NORMAL)
+	,m_nSaleCoin(0)
+	,m_nDir(0,-1)
+	,m_nEnemyIndex(0)
+	,m_nCurTowerID(0)
+	,i(0)
 {
 }
 
-// 析构函数
 CTower::~CTower()
 {
 }
 
-// 使用数据初始化塔台
 bool CTower::initWithData(int nTowerID)
 {
-    if (!Node::init()) {
-        return false;
-    }
-    m_nCurTowerID = nTowerID; // 设置塔台ID
-    m_pTowerDt = static_cast<STowerDt*>(CConfigMgr::getInstance()->getData("TowerDtMgr")->getDataByID(nTowerID)); // 获取塔台数据
-    m_pImage = Sprite::createWithSpriteFrameName(m_pTowerDt->m_VecLevel[m_nCurGrade]->VecImg[nCurState]); // 创建塔台精灵
-    m_nSaleCoin = m_pTowerDt->m_VecLevel[m_nCurGrade]->nWorth; // 设置出售金币
-    m_nUpGradeCoin = m_pTowerDt->m_VecLevel[m_nCurGrade]->nUpgradeCoin; // 设置升级金币
-    this->addChild(m_pImage); // 添加塔台精灵为子节点
-    this->schedule(CC_CALLBACK_1(CTower::search, this), "search"); // 定时执行搜索函数
-    this->schedule(CC_CALLBACK_1(CTower::fire, this), m_pTowerDt->m_VecLevel[m_nCurGrade]->fAckInterval, "fire"); // 定时执行开火函数
-    return true;
+	if (!Node::init()) {
+		return false;
+	}
+	m_nCurTowerID = nTowerID;
+	m_pTowerDt = static_cast<STowerDt*>(CConfigMgr::getInstance()->getData("TowerDtMgr")->getDataByID(nTowerID));
+	m_pImage = Sprite::createWithSpriteFrameName(m_pTowerDt->m_VecLevel[m_nCurGrade]->VecImg[nCurState]);
+	m_nSaleCoin = m_pTowerDt->m_VecLevel[m_nCurGrade]->nWorth;
+	m_nUpGradeCoin = m_pTowerDt->m_VecLevel[m_nCurGrade]->nUpgradeCoin;
+	this->addChild(m_pImage);
+	this->schedule(CC_CALLBACK_1(CTower::search,this),"search");
+	this->schedule(CC_CALLBACK_1(CTower::fire, this), m_pTowerDt->m_VecLevel[m_nCurGrade]->fAckInterval, "fire");
+	return true;
 }
 
-// 升级塔台
+//升级炮塔
 void CTower::upgrade()
 {
-    m_pImage->setSpriteFrame(m_pTowerDt->m_VecLevel[++m_nCurGrade]->VecImg[nCurState]); // 更新塔台精灵图像
-    setSaleCoin(m_pTowerDt->m_VecLevel[m_nCurGrade]->nWorth); // 更新出售金币
-    setUpGradeCoin(m_pTowerDt->m_VecLevel[m_nCurGrade]->nUpgradeCoin); // 更新升级金币
-    setCurGrade(m_nCurGrade); // 更新当前等级
+	m_pImage->setSpriteFrame(m_pTowerDt->m_VecLevel[++m_nCurGrade]->VecImg[nCurState]);
+	setSaleCoin(m_pTowerDt->m_VecLevel[m_nCurGrade]->nWorth);
+	setUpGradeCoin(m_pTowerDt->m_VecLevel[m_nCurGrade]->nUpgradeCoin);
+	setCurGrade(m_nCurGrade);
 }
 
-// 创建塔台实例
-CTower* CTower::createWithData(int nTowerID)
+CTower * CTower::createWithData(int nTowerID)
 {
-    CTower* pTower = new CTower();
-    if (pTower && pTower->initWithData(nTowerID)) {
-        pTower->autorelease();
-        return pTower;
-    }
-    CC_SAFE_DELETE(pTower);
-    return nullptr;
+	CTower* pTower = new CTower();
+	if (pTower&&pTower->initWithData(nTowerID)) {
+		pTower->autorelease();
+		return pTower;
+	}
+	CC_SAFE_DELETE(pTower);
+
+	return nullptr;
 }
 
-// 搜索敌人
+//getTarget() {}
+
+
 void CTower::search(float delta)
 {
-    // 从游戏场景获取敌人管理器，查找在塔台攻击范围内的敌人
-    CEnemy* pTarget = CGameScene::getInstance()->getEnemyMgr()->getEnemyByRadius(m_pTowerDt->m_VecLevel[m_nCurGrade]->nScope, this->getPosition());
-    // 如果找到敌人，根据敌人位置调整塔台方向，并可能执行开火操作
-    if (pTarget) {
-        Vec2 EnemyPos = pTarget->getPosition();
-        Vec2 TowerPos = this->getPosition();
-        m_fDisSq = EnemyPos.getDistanceSq(TowerPos);
-        float TowerScope = m_pTowerDt->m_VecLevel[m_nCurGrade]->nScope;
-        if (TowerScope * TowerScope >= m_fDisSq && (m_nCurTowerID == 4001 || m_nCurTowerID == 4002 || m_nCurTowerID == 4003 || m_nCurTowerID == 4004 || m_nCurTowerID == 4006)) {
-            Vec2 disPos = EnemyPos - TowerPos;
-            m_nDir = disPos.getNormalized();
-            Vec2 downVector(0, -1);
-            float angleRadians = m_nDir.getAngle(downVector);
-            float angleDegrees = CC_RADIANS_TO_DEGREES(angleRadians);
-            m_pImage->setRotation(angleDegrees); // 旋转塔台朝向敌人
-        }
-    }
+	//Vector<Node*> VecEnemy = CGameScene::getInstance()->getEnemyMgr()->getChildren();
+	//for (Node*& pENode : VecEnemy) {
+	//	CEnemy* pEnemy = static_cast<CEnemy*>(pENode);
+	CEnemy* pTarget = CGameScene::getInstance()->getEnemyMgr()->getEnemyByRadius(m_pTowerDt->m_VecLevel[m_nCurGrade]->nScope, this->getPosition());
+	if (pTarget) {
+		Vec2 EnemyPos = pTarget->getPosition();
+		Vec2 TowerPos = this->getPosition();
+		m_fDisSq = EnemyPos.getDistanceSq(TowerPos);
+		float TowerScope = m_pTowerDt->m_VecLevel[m_nCurGrade]->nScope;
+		//只有几种塔台才会旋转
+		//只有等前一只死了才会重新转向
+		if (TowerScope*TowerScope >= m_fDisSq && (m_nCurTowerID == 4001 || m_nCurTowerID == 4002 || m_nCurTowerID == 4003 || m_nCurTowerID == 4004 || m_nCurTowerID == 4006)) {
+			//进入炮台攻击范围
+			//旋转炮台
+			Vec2 disPos = EnemyPos - TowerPos;
+			m_nDir = disPos.getNormalized();
+			
+			//float fAngle = Vec2::angle(m_nDir, Vec2(1, 0));
+			//float fDegree = CC_RADIANS_TO_DEGREES(fAngle);
+			//m_pImage->setRotation(fDegree - 90);
+			Vec2 downVector(0, -1);
+			float angleRadians = m_nDir.getAngle(downVector);
+			float angleDegrees = CC_RADIANS_TO_DEGREES(angleRadians);
+			m_pImage->setRotation(angleDegrees);
+		}
+	}
 }
 
-// 塔台开火
 void CTower::fire(float Dt)
 {
-    // 获取在攻击范围内的敌人
-    CEnemy* pTarget = CGameScene::getInstance()->getEnemyMgr()->getEnemyByRadius(m_pTowerDt->m_VecLevel[m_nCurGrade]->nScope, this->getPosition());
-    if (pTarget) {
-        // 根据塔台ID和塔台等级确定开火逻辑
-        if (m_nCurTowerID == 4001 || m_nCurTowerID == 4002 || m_nCurTowerID == 4004) {
-            nCurState = E_STATE_FIRE; // 设置塔台为开火状态
-            m_pImage->setSpriteFrame(m_pTowerDt->m_VecLevel[m_nCurGrade]->VecImg[nCurState]); // 更新塔台图像为开火状态
-            SBulletDt* pBulletDt = static_cast<SBulletDt*>(CConfigMgr::getInstance()->getData("BulletDtMgr")->getDataByID(m_pTowerDt->m_VecLevel[m_nCurGrade]->nBulletID)); // 获取子弹数据
-            CBullet* pBullet = CBullet::createWithData(pBulletDt); // 创建子弹
-            pBullet->setPosition(this->getPosition()); // 设置子弹位置
-            _eventDispatcher->dispatchCustomEvent("addBullet", pBullet); // 添加子弹到游戏场景
-            pBullet->setTarget(pTarget); // 设置子弹的目标
-            pBullet->setDamage(m_pTowerDt->m_VecLevel[m_nCurGrade]->nAck); // 设置子弹的伤害
-            pBullet->addCollsionCb(CC_CALLBACK_1(CEnemy::onCollision, pTarget)); // 设置子弹的碰撞回调
-            Vec2 dir = (pTarget->getPosition() - this->getPosition()).getNormalized();
-            Vec2 downVector(0, -1);
-            float angleRadians = dir.getAngle(downVector);
-            float angleDegrees = angleRadians * 180 / M_PI;  // M_PI 是一个宏，定义了π的值
-            pBullet->setRotation(angleDegrees); // 设置子弹的方向
-        }
-        // 其他塔台的开火逻辑可以在这里添加
-        else {
-            nCurState = E_STATE_NORMAL; // 设置塔台为正常状态
-            m_pImage->setSpriteFrame(m_pTowerDt->m_VecLevel[m_nCurGrade]->VecImg[nCurState]); // 更新塔台图像为正常状态
-        }
-    }
+	// 获取在炮塔攻击范围内的敌人
+	CEnemy* pTarget = CGameScene::getInstance()->getEnemyMgr()->getEnemyByRadius(m_pTowerDt->m_VecLevel[m_nCurGrade]->nScope, this->getPosition());
+
+	// 如果有敌人在攻击范围内
+	if (pTarget) {
+		// 判断炮塔类型是否是指定的几种（4001、4002、4004）
+		if (m_nCurTowerID == 4001 || m_nCurTowerID == 4002 || m_nCurTowerID == 4004) {
+			// 切换炮塔的当前状态为“开火”
+			nCurState = E_STATE_FIRE;
+
+			// 更新炮塔显示的图片（根据炮塔等级和当前状态获取对应的图片）
+			m_pImage->setSpriteFrame(m_pTowerDt->m_VecLevel[m_nCurGrade]->VecImg[nCurState]);
+
+			// 获取炮塔当前等级对应的子弹信息
+			SBulletDt* pBulletDt = static_cast<SBulletDt*>(CConfigMgr::getInstance()->getData("BulletDtMgr")->getDataByID(m_pTowerDt->m_VecLevel[m_nCurGrade]->nBulletID));
+
+			// 创建子弹对象，并设置位置为炮塔位置
+			CBullet* pBullet = CBullet::createWithData(pBulletDt);
+			pBullet->setPosition(this->getPosition());
+
+			// 发送自定义事件，通知场景添加子弹
+			_eventDispatcher->dispatchCustomEvent("addBullet", pBullet);
+			pBullet->setTarget(pTarget);
+			pBullet->setDamage(m_pTowerDt->m_VecLevel[m_nCurGrade]->nAck);
+
+			// 添加子弹碰撞回调，即当子弹碰撞到敌人时执行敌人的 onCollision 方法
+			pBullet->addCollsionCb(CC_CALLBACK_1(CEnemy::onCollision, pTarget));
+
+			// 计算炮塔指向敌人的方向
+			Vec2 dir = (pTarget->getPosition() - this->getPosition()).getNormalized();
+
+			// 设置子弹的旋转角度，使其朝向敌人
+			Vec2 downVector(0, -1);
+			float angleRadians = dir.getAngle(downVector);
+			float angleDegrees = angleRadians * 180 / M_PI;
+			pBullet->setRotation(angleDegrees);
+		}
+	}
+		else {
+			nCurState = E_STATE_NORMAL;
+			m_pImage->setSpriteFrame(m_pTowerDt->m_VecLevel[m_nCurGrade]->VecImg[nCurState]);
+		}
 }
