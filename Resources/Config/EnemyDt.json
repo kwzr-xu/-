@@ -25,14 +25,5 @@
     "coins": 50,
     "image": "ui_L_Monsters_03_01.png",
     "anim": "enemyAnim03"
-  },
-  {
-    "id": 2004,
-    "ack": 10,
-    "speed": 5,
-    "hp": 10000,
-    "coins": 1000,
-    "image": "ui_L_Monsters_04_01.png",
-    "anim": "enemyAnim04"
   }
 ]

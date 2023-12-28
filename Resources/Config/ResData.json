@@ -9,13 +9,11 @@
 	},
 	"Menu": {
     "png": [
-      "Default-Landscape_ipad.png",
       "Menu/ui_Menu.png",
-      "Menu/ui_Select.png",
-      "Menu/ui_Setting.png"
+      "Menu/ui_Select.png"
     ],
-    "plist": [ "Menu/ui_Menu.plist", "Menu/ui_Select.plist", "Menu/ui_Setting.plist" ],
-		"audio": ["Menu/MainAudio.mp3","click.mp3"]
+    "plist": [ "Menu/ui_Menu.plist", "Menu/ui_Select.plist" ],
+		"audio": ["Menu/BGM.mp3","click.mp3"]
 	},
 	"Game": {
     "png": [

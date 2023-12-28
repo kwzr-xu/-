@@ -125,13 +125,6 @@
         "NextInterval": 6
       },
       {
-        "EnemyId": 2004,
-        "pathId": 1,
-        "EnemyCount": 1,
-        "CurInterval": 0.5,
-        "NextInterval": 6
-      },
-      {
         "EnemyId": 2001,
         "pathId": 1,
         "EnemyCount": 15,
